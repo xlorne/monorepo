@@ -1,4 +1,4 @@
-# pnpm with Rsbuild&Rslib build Monorepo 
+# pnpm with Rsbuild&Rslib build Monorepo
 
 ## 综述
 
@@ -14,38 +14,45 @@
 1. 创建monorepo文件夹，然后通过`pnpm init` 创建`packages.json`
 
 * 修改package.json的name
+
 ```
   "name": "@xlorne/root",
 ```
+
 之所以叫做@xlorne是因为我的npmjs仓库的账号叫做xlorne，为了可以正常上传中心仓库设置了工程名称为@xlorne。
 
 2. 指定node于pnpm工具及版本
 
 * 在`package.json`下添加如下内容
+
 ```
   "packageManager": "pnpm@10.15.1",
   "engines": {
     "node": "20.x"
   },
 ```
+
 * 创建`.npmrc`限制node版本为`package.json`中指定的版本
+
 ```
 engine-strict = true
 ```
 
 3. 创建`pnpm-workspace.yaml`并对应创建packages/apps目录
+
 ```
 packages:
   - packages/*
   - apps/*
 ```
 
-4.  创建utils的依赖仓库
+4. 创建utils的依赖仓库
 
 ``` shell
 cd packages
 npm create rslib@latest
 ```
+
 执行过程如下:
 
 ```
@@ -78,7 +85,8 @@ npm create rslib@latest
 └  All set, happy coding!
 ```
 
-5.  创建ui的组件依赖仓库
+5. 创建ui的组件依赖仓库
+
 ```shell
 cd packages
 
@@ -122,6 +130,7 @@ npm create rslib@latest
 为了添加别名的，先在src下创建了components文件夹，然后将Button组件代码转移过去
 
 * 修改`tsconfig.json`
+
 ```
   "compilerOptions": {
     ...
@@ -131,7 +140,9 @@ npm create rslib@latest
     }
   },
 ```
+
 * 在`rslib.config.ts` 与 `rstest.config.ts`下增加alias
+
 ```
   resolve: {
     alias: { '@': path.resolve(__dirname, 'src') },
@@ -141,6 +152,7 @@ npm create rslib@latest
 这样组件就可以直接通过@/导入 `export { Button } from '@/components/Button';`
 
 * 为了支持tests下的@支持，需要在`tests/tsconfig.json`下增加如下配置
+
 ```
   "compilerOptions": {
     "baseUrl": ".",
@@ -167,7 +179,9 @@ cd apps
 npm create rsbuild@latest
 
 ```
+
 执行过程如下:
+
 ```
 
 ◆  Create Rsbuild Project
@@ -213,6 +227,7 @@ pnpm add @xlorne/ui @xlorne/utils -F @xlorne/demo --workspace
 * 将所有共同依赖的版本归集到了root下
 * 在root下增加scripts脚本
 * 在ui于utils的`package.json`下增加标识信息，增加`push`指令
+
 ```
 "description": "A UI Framework built with React and Typescript",
   "keywords": [
@@ -233,6 +248,7 @@ pnpm add @xlorne/ui @xlorne/utils -F @xlorne/demo --workspace
 ```
 
 12. 发布ui组件到中心仓库
+
 ```
 pnpm run -F @xlorne/ui push
 

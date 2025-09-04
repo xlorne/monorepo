@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "lib": ["DOM", "ES2022"],
+    "lib": [
+      "DOM",
+      "ES2022"
+    ],
     "module": "ESNext",
     "jsx": "react-jsx",
     "strict": true,
@@ -11,8 +14,12 @@
     "useDefineForClassFields": true,
     "baseUrl": ".",
     "paths": {
-       "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     }
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }
