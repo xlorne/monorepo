@@ -1,0 +1,39 @@
+{
+  "name": "@xlorne/utils",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A UI Framework built with React and Typescript",
+  "keywords": [
+    "ui",
+    "framework",
+    "react",
+    "typescript"
+  ],
+  "homepage": "https://github.com/xlorne/monorepo",
+  "bugs": {
+    "url": "https://github.com/xlorne/monorepo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xlorne/monorepo.git"
+  },
+  "license": "Apache-2.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rslib build",
+    "dev": "rslib build --watch",
+    "push": "npm run build && npm publish --access public"
+  },
+  "devDependencies": {
+    "@rslib/core": "^0.12.4"
+  }
+}
