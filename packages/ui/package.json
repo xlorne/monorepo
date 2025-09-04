@@ -31,10 +31,15 @@
   "scripts": {
     "build": "rslib build",
     "dev": "rslib build --watch",
-    "push": "npm run build && npm publish --access public"
+    "push": "npm run build && npm publish --access public",
+    "test": "rstest"
   },
   "devDependencies": {
-    "@rslib/core": "^0.12.4"
+    "@rslib/core": "^0.12.4",
+    "@rstest/core": "^0.3.0",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "jsdom": "^26.1.0"
   },
   "peerDependencies": {
     "react": ">=19.0.0",

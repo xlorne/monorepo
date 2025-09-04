@@ -1,6 +1,7 @@
 import { pluginReact } from '@rsbuild/plugin-react';
 import { defineConfig } from '@rslib/core';
 import {pluginSass} from '@rsbuild/plugin-sass';
+import path from "path";
 
 export default defineConfig({
   source: {
@@ -19,4 +20,7 @@ export default defineConfig({
     target: 'web',
   },
   plugins: [pluginReact(),pluginSass()],
+  resolve: {
+    alias: { '@': path.resolve(__dirname, 'src') },
+  },
 });

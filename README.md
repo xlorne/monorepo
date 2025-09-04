@@ -1,5 +1,14 @@
 # pnpm with Rsbuild&Rslib build Monorepo 
 
+## 综述
+
+* 通过pnpm构建monorepo项目
+* 通过rsbuild构建react项目
+* 通过rslib构建依赖工程
+* 统一配置支持@/别名
+* 支持rstest单元测试
+* 支持typescript
+
 ## 项目构建过程
 
 1. 创建monorepo文件夹，然后通过`pnpm init` 创建`packages.json`
@@ -52,7 +61,7 @@ npm create rslib@latest
 │  TypeScript
 │
 ◇  Select development tools (Use <space> to select, <enter> to continue)
-│  none
+│  Rstest
 │
 ◇  Select additional tools (Use <space> to select, <enter> to continue)
 │  none
@@ -91,7 +100,7 @@ npm create rslib@latest
 │  TypeScript
 │
 ◇  Select development tools (Use <space> to select, <enter> to continue)
-│  none
+│  Rstest
 │
 ◇  Select additional tools (Use <space> to select, <enter> to continue)
 │  none
@@ -108,7 +117,40 @@ npm create rslib@latest
 └  All set, happy coding!
 ```
 
-6. 修改ui于utils的`package.json`的name
+6. 在ui下配置@别名
+
+为了添加别名的，先在src下创建了components文件夹，然后将Button组件代码转移过去
+
+* 修改`tsconfig.json`
+```
+  "compilerOptions": {
+    ...
+    "baseUrl": ".",
+    "paths": {
+       "@/*": ["src/*"]
+    }
+  },
+```
+* 在`rslib.config.ts` 与 `rstest.config.ts`下增加alias
+```
+  resolve: {
+    alias: { '@': path.resolve(__dirname, 'src') },
+  },
+```
+
+这样组件就可以直接通过@/导入 `export { Button } from '@/components/Button';`
+
+* 为了支持tests下的@支持，需要在`tests/tsconfig.json`下增加如下配置
+```
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["../src/*"]
+    },
+  }
+```
+
+7. 修改ui于utils的`package.json`的name
 
 ```
   "name": "@xlorne/ui",
@@ -118,7 +160,7 @@ npm create rslib@latest
   "name": "@xlorne/utils",
 ```
 
-7. 创建demo的实例库
+8. 创建demo的实例库
 
 ```shell
 cd apps
@@ -154,19 +196,19 @@ npm create rsbuild@latest
 └  All set, happy coding!
 ```
 
-8. 修改demo的`package.json`name
+9. 修改demo的`package.json`name
 
 ```
 "name": "@xlorne/demo",
 ```
 
-9. 在demo中依赖ui和utils组件
+10. 在demo中依赖ui和utils组件
 
 ```
 pnpm add @xlorne/ui @xlorne/utils -F @xlorne/demo --workspace
 ```
 
-10. 调整`package.json`
+11. 调整`package.json`
 
 * 将所有共同依赖的版本归集到了root下
 * 在root下增加scripts脚本
@@ -190,15 +232,16 @@ pnpm add @xlorne/ui @xlorne/utils -F @xlorne/demo --workspace
   "license": "Apache-2.0",
 ```
 
-11. 发布ui组件到中心仓库
+12. 发布ui组件到中心仓库
 ```
 pnpm run -F @xlorne/ui push
 
 pnpm run -F @xlorne/utils push
 ```
 
-12. 运行demo测试
+13. 运行demo测试
 
 ```
 pnpm run dev
 ```
+

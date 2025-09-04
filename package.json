@@ -14,7 +14,9 @@
     "build:ui": "pnpm run -F @xlorne/ui build",
     "build:utils": "pnpm run -F @xlorne/utils build",
     "build": "pnpm run build:ui && pnpm run build:utils",
-    "dev": "pnpm run -F @xlorne/demo dev"
+    "dev": "pnpm run -F @xlorne/demo dev",
+    "test:ui": "pnpm run -F @xlorne/ui test",
+    "test:utils": "pnpm run -F @xlorne/utils test"
   },
   "dependencies": {
     "react": "^19.1.1",
