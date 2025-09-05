@@ -13,10 +13,12 @@
   "scripts": {
     "build:ui": "pnpm run -F @xlorne/ui build",
     "build:utils": "pnpm run -F @xlorne/utils build",
-    "build": "pnpm run build:ui && pnpm run build:utils",
-    "dev": "pnpm run -F @xlorne/demo dev",
+    "dev:ui": "pnpm run -F @xlorne/ui dev",
+    "dev:utils": "pnpm run -F @xlorne/utils dev",
     "test:ui": "pnpm run -F @xlorne/ui test",
-    "test:utils": "pnpm run -F @xlorne/utils test"
+    "test:utils": "pnpm run -F @xlorne/utils test",
+    "build": "pnpm run build:ui && pnpm run build:utils",
+    "dev": "pnpm run -F @xlorne/demo dev"
   },
   "dependencies": {
     "react": "^19.1.1",

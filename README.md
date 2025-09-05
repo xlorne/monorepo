@@ -249,7 +249,7 @@ pnpm add @xlorne/ui @xlorne/utils -F @xlorne/demo --workspace
 
 12. 发布ui组件到中心仓库
 
-```
+```shell
 pnpm run -F @xlorne/ui push
 
 pnpm run -F @xlorne/utils push
@@ -257,9 +257,22 @@ pnpm run -F @xlorne/utils push
 
 13. 运行demo测试
 
-```
+```shell
 pnpm install
 pnpm run build
 pnpm run dev
 ```
+上述方式，代码将会自动打包成dist然后静态依赖到demo中，不支持在依赖库修改后直接预览展示的能力。
 
+如果需要开启依赖度修改及时响应界面的需要运行依赖库的dev模式（watch模式），然后在启动demo
+
+```shell
+pnpm install
+# 在一个命令窗口下执行
+pnpm run dev:ui
+# 在一个命令窗口下执行
+pnpm run dev:utils
+# 在一个命令窗口下执行
+pnpm run dev
+```
+上述过程相当于运行了3个服务，2个依赖库的检测更新服务，1个app服务。
