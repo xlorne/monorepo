@@ -1,4 +1,4 @@
-# pnpm with Rsbuild&Rslib build Monorepo
+# Use pnpm on Rsstack build Monorepo Project
 
 ## 综述
 
