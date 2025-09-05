@@ -258,6 +258,8 @@ pnpm run -F @xlorne/utils push
 13. 运行demo测试
 
 ```
+pnpm install
+pnpm run build
 pnpm run dev
 ```
 

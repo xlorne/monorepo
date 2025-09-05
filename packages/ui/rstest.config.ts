@@ -1,7 +1,7 @@
 import {pluginReact} from '@rsbuild/plugin-react';
 import {pluginSass} from '@rsbuild/plugin-sass';
 import {defineConfig} from '@rstest/core';
-import path from 'path';
+import * as path from 'path';
 
 export default defineConfig({
     testEnvironment: 'jsdom',
