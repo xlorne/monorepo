@@ -9,7 +9,7 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
-    "@xlorne/ui": "workspace:*",
+    "@xlorne/ui-api": "workspace:*",
     "@xlorne/utils": "workspace:*"
   }
 }

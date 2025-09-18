@@ -1,21 +1,19 @@
 import './Button.scss';
+import { ButtonProps } from "@xlorne/ui-api";
+import * as React from "react";
 
-interface ButtonProps {
-    primary?: boolean;
-    backgroundColor?: string;
-    size?: 'small' | 'medium' | 'large';
-    label: string;
-    onClick?: () => void;
-}
-
-export const Button = ({
-                           primary = false,
-                           size = 'medium',
-                           backgroundColor,
-                           label,
-                           ...props
-                       }: ButtonProps) => {
+export const Button:React.FC<ButtonProps> = (props) => {
+    const { primary = false, size = 'medium', backgroundColor, label } = props;
     const mode = primary ? 'demo-button--primary' : 'demo-button--secondary';
+
+    React.useImperativeHandle(props.actionRef, () => {
+        return {
+            getLabel: () => {
+                return label;
+            }
+        }
+    },[props.actionRef]);
+
     return (
         <button
             type="button"

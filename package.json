@@ -11,13 +11,15 @@
     "node": "20.x"
   },
   "scripts": {
+    "build:ui-api": "pnpm run -F @xlorne/ui-api build",
     "build:ui": "pnpm run -F @xlorne/ui build",
     "build:utils": "pnpm run -F @xlorne/utils build",
+    "dev:ui-api": "pnpm run -F @xlorne/ui-api dev",
     "dev:ui": "pnpm run -F @xlorne/ui dev",
     "dev:utils": "pnpm run -F @xlorne/utils dev",
     "test:ui": "pnpm run -F @xlorne/ui test",
     "test:utils": "pnpm run -F @xlorne/utils test",
-    "build": "pnpm run build:ui && pnpm run build:utils",
+    "build": "pnpm run build:ui-api && pnpm run build:ui && pnpm run build:utils",
     "dev": "pnpm run -F @xlorne/demo dev"
   },
   "dependencies": {
@@ -28,6 +30,7 @@
     "@rsbuild/core": "^1.5.0",
     "@rsbuild/plugin-react": "^1.4.0",
     "@rsbuild/plugin-sass": "^1.4.0",
+    "@rslib/core": "^0.13.3",
     "@types/node": "^22.18.0",
     "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.7",

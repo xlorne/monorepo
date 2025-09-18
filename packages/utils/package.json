@@ -35,7 +35,6 @@
     "test": "rstest"
   },
   "devDependencies": {
-    "@rslib/core": "^0.12.4",
     "@rstest/core": "^0.3.0"
   }
 }
