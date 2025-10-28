@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@xlorne/ui-api": "workspace:*",
-    "@xlorne/utils": "workspace:*"
+    "@xlorne/utils": "workspace:*",
+    "@xlorne/ui": "workspace:*"
   }
 }
